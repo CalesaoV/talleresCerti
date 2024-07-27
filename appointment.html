@@ -22,13 +22,23 @@
         <h2>Agendar Cita</h2>
         <form action="/schedule" method="post">
             <label for="workshop-name">Nombre del Taller</label>
-            <input type="text" id="workshop-name" name="workshop-name">
+            <input type="text" id="workshop-name" name="workshop-name" readonly>
             <label for="details">Detalles del Mantenimiento/Revisión</label>
             <textarea id="details" name="details" rows="4"></textarea>
             <input type="submit" value="Agendar">
         </form>
     </section>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const workshopName = urlParams.get('taller');
+        if (workshopName) {
+            document.getElementById('workshop-name').value = workshopName;
+        }
+    });
+</script>
 
 </body>
 </html>
